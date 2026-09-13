@@ -69,12 +69,16 @@ Add boundary-case analysis to each module:
 
 ### [精简模式]
 
-Still output all 11 chapters, but:
+Use the short specification in `SKILL.md`, not the full 11-chapter template:
 
-- fully specify P0 modules
-- summarize P1-P3 as `待扩展`
-- keep data model to the minimal entities needed for P0
-- keep technical architecture to the smallest shippable path
+- state the goal, affected scope and boundary
+- specify the core behavior and relevant failure/recovery paths
+- define observable acceptance and known project verification commands
+- include only necessary data/API changes and real unresolved questions
+- do not invent personas, competitor tables, extra priorities or numeric targets merely to fill a template
+- do not run `lint_prd.py` on a short specification; it is the full-PRD structure checker
+
+For routine fixes and small edits, a 3–5 line plan is enough unless the user explicitly asks for a PRD. A request for a complete PRD still uses full mode even when the product is small.
 
 ### [前端视角]
 
@@ -158,7 +162,7 @@ When multiple tags appear, combine them by priority:
 3. perspective tags such as `[前端视角]` or `[后端视角]`
 4. market tags such as `[竞品深挖]`, `[商业化]`, `[开源友好]`
 
-If `[精简模式]` and `[深度模式]` both appear, make P0 deep and keep lower tiers short.
+If `[精简模式]` and `[深度模式]` both appear, deepen the core behavior and failure cases within the short specification; do not restore 11 chapters or add lower tiers.
 
 If `[创意模式]` appears with any other mode, keep the other mode's scope and add 2-4 sharper `超预期机会` plus broader `发挥空间`.
 

@@ -1,12 +1,21 @@
 # Output Quality
 
-Run this checklist before returning a PRD.
+Choose the checklist for the requested document depth. Do not apply the full-PRD format to a short specification or routine-fix plan.
 
-## Required Self-Check
+## Short Specification / Small Plan
+
+- The requested outcome, affected scope and boundary are explicit.
+- Core behavior and relevant failure/recovery cases are actionable, rather than abstract claims.
+- Acceptance checks the requested outcome; verification commands are read from the project, not invented.
+- Current UI references determine the whole-page target; old project palettes and shell restrictions are not imported as new requirements.
+- Unknowns are honest and necessary. There are no filler chapters or invented personas, performance numbers and future features.
+- A short specification is not a full-PRD lint result. Run the project's actual checks after implementation; document review alone does not prove completion.
+
+## Full PRD Self-Check
 
 - Every required chapter from one to eleven appears in order.
 - `AI 速读卡` appears before the chapters and is short enough to skim.
-- Important requirements are separated into `硬约束`, `推荐默认`, and `发挥空间`.
+- `硬约束` contains only constraints the user stated; no invented UI constraints (colors, tokens, fonts, layout, shell).
 - Every major module has an ASCII diagram with realistic content.
 - Module flows include a normal path and at least two failure paths.
 - Each module has a state list with trigger condition, visual marker, and exit condition.

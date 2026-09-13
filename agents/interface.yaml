@@ -1,7 +1,7 @@
 interface:
-  display_name: "Qiaomu AI PRD"
-  short_description: "Turn one-line product ideas into AI-implementable PRDs with speed-read cards, constraint layers, modules, data models, architecture, metrics, and acceptance scripts."
-  default_prompt: "Use $qiaomu-ai-prd to turn my product idea into a Chinese-first, AI-implementable PRD. Include an AI 速读卡, all 11 required chapters, best-default product decisions, 硬约束/推荐默认/发挥空间, 超预期机会, realistic ASCII diagrams, concrete metrics, commented data models, honest known unknowns, and 验收剧本 for implementation verification."
+  display_name: "AI-PRD-Devin"
+  short_description: "Write full product PRDs or concise module specifications with actionable behavior and acceptance."
+  default_prompt: "Use $AI-PRD-Devin to specify this task in Chinese. Choose full PRD for a new product, substantial feature or explicit full-PRD request; use a short specification for a bounded module or 精简模式. Routine fixes need only a short plan unless I ask for a PRD. Follow my current whole-page UI reference and define observable acceptance without inheriting another project's constraints."
 compatibility:
   canonical_format: "agent-skills"
   adapter_targets:
@@ -20,5 +20,5 @@ compatibility:
     remote_metadata_policy: "allow-metadata-only"
   degradation:
     openai: "generates structured PRDs from available product context"
-    claude: "generates AI-readable product requirement documents with the same chapter contract"
-    generic: "uses the PRD methodology and self-checks against required sections"
+    claude: "generates a full PRD or short specification according to task scope"
+    generic: "uses the selected document depth and its matching quality checklist"

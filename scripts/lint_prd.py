@@ -60,9 +60,6 @@ VAGUE_PERFORMANCE_PATTERNS = [
 
 REQUIRED_MARKERS = [
     ("ai speed-read card", "AI 速读卡"),
-    ("hard constraints", "硬约束"),
-    ("recommended defaults", "推荐默认"),
-    ("creative space", "发挥空间"),
     ("differentiation table", "差异化对比表"),
     ("three personas", "三类用户画像"),
     ("feasibility boundary", "可行性边界"),

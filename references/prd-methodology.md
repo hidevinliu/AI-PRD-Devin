@@ -26,10 +26,9 @@ Required fields:
 - 产品一句话
 - 核心循环
 - 目标平台
-- 硬约束
-- 推荐默认
-- 发挥空间
 - P0 验收
+
+Optional fields (only when the user stated them): `硬约束`, `推荐默认`, `发挥空间`.
 - 最容易翻车
 - 超预期机会
 
@@ -89,7 +88,7 @@ Classify the product requirements into three buckets:
 - `推荐默认`: the best default decision for most implementations; the implementing AI may adjust if project evidence points elsewhere.
 - `发挥空间`: areas where the implementing AI should improve taste, details, micro-interactions, visuals, motion, empty states, copy, or architecture quality without changing the product contract.
 
-This table prevents over-constraining the AI while protecting the product's core.
+This table is optional. Never put colors, tokens, fonts, layout, or shell/sidebar/topbar preservation into `硬约束` unless the user said so; for UI work the user's reference sample, reproduced whole-page, is the target.
 
 ### 第二章：整体布局与导航
 

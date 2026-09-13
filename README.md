@@ -1,13 +1,24 @@
-# qiaomu-ai-prd
+# AI-PRD-Devin
+
+Fork of [向阳乔木](https://x.com/vista8)'s [`qiaomu-ai-prd`](https://github.com/joeseesun/qiaomu-ai-prd), tuned by Devin for an agent workflow that ends in [`red-green-mode`](https://github.com/hidevinliu/red-green-mode) (an exit-code test-tampering guard, also open source).
 
 > 你只有一句产品想法，但真正要交给 AI 编程助手时，它需要的是一份可执行 PRD。
 > Turn one-line product ideas into AI-implementable PRDs.
 
-[![Last commit](https://img.shields.io/github/last-commit/joeseesun/qiaomu-ai-prd?style=flat-square)](https://github.com/joeseesun/qiaomu-ai-prd/commits/main)
-[![License](https://img.shields.io/github/license/joeseesun/qiaomu-ai-prd?style=flat-square)](LICENSE)
-[![Repo](https://img.shields.io/badge/GitHub-joeseesun%2Fqiaomu--ai--prd-black?style=flat-square&logo=github)](https://github.com/joeseesun/qiaomu-ai-prd)
+[![License](https://img.shields.io/github/license/hidevinliu/AI-PRD-Devin?style=flat-square)](LICENSE)
+[![Repo](https://img.shields.io/badge/GitHub-hidevinliu%2FAI--PRD--Devin-black?style=flat-square&logo=github)](https://github.com/hidevinliu/AI-PRD-Devin)
 
 **[中文](#中文) | [English](#english)**
+
+## 这个 fork 相比上游改了什么
+
+- **任务分级**：新产品/大功能才写完整 11 章 PRD；单模块或 `[精简模式]` 只写目标、范围、核心行为、验收与未决项；小修补只给 3–5 行方案 —— 不用一份模板套所有需求体量。
+- **核心机制强制落地**：P0 核心模块必须写清楚可实现的规则/算法/启发式，不许把核心功能架空成"准确率未知"。
+- **单一事实源**：关键数字（阈值、超时、上限）只在 `AI 速读卡` 定一次，全文复用，杜绝跨章节互相打架。
+- **lint 只查正文**：`scripts/lint_prd.py` 只在正文找占位符，放过 JSON / ASCII 图 / Markdown 链接里的合法内容，减少误报。
+- **接力棒交接**（第 13 步）：当 PRD 要进 `red-green-mode` 实现时，额外产出 `acceptance-contract.json`，把「验收剧本」转成 TDD/red-green 两个下游 skill 都能消费的结构化契约——这是 `PRD → TDD → red-green` 三棒接力的第一棒交接物。
+
+用法与上游一致（见下方安装与示例）；下方的 `npx skills add joeseesun/qiaomu-ai-prd` 装的是**上游原版**。要用这个 fork 的改动，直接把本仓库放进你的 agent skills 目录（例如 `~/.agents/skills/AI-PRD-Devin/`）即可，不需要额外构建。
 
 ---
 
@@ -86,7 +97,7 @@ WordPulse 是一款 Web 英语单词学习工具，让自学者能够围绕自�
 | 模式 | 作用 |
 |---|---|
 | `[深度模式]` | 每个模块增加边界情况分析 |
-| `[精简模式]` | 详细写 P0，其余标注待扩展 |
+| `[精简模式]` | 短规格：目标、范围、核心行为、验收、必要未决项；不强制 11 章 |
 | `[前端视角]` | 增加组件拆分和状态管理建议 |
 | `[后端视角]` | 增加 API 和数据库设计 |
 | `[移动优先]` | 图示和交互优先按移动端设计 |
@@ -104,7 +115,7 @@ WordPulse 是一款 Web 英语单词学习工具，让自学者能够围绕自�
 ## 质量门槛
 
 - 每个主要模块都有真实内容的 ASCII 图。
-- 必须包含 `AI 速读卡`、`硬约束 / 推荐默认 / 发挥空间` 和 `超预期机会`。
+- 必须包含 `AI 速读卡` 和 `超预期机会`；`硬约束 / 推荐默认 / 发挥空间` 可选，且硬约束只写用户明说的，禁止自行添加 UI 约束（颜色/token/字体/布局/壳层）。
 - 每个模块覆盖默认态、激活态、空状态、错误态中的相关状态。
 - 数据模型字段都有 `//` 注释，顶层对象包含 `"version"`。
 - 性能指标必须是数字，不能只写“快”“流畅”。
